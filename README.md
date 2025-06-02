@@ -74,12 +74,12 @@ Now, log in to the MySQL root account to create a new user and database:
 
 sudo mysql -u root -p # Enter the root password you set
 
-Once in the MySQL prompt (mysql>), execute the following commands to create a user named Nilesh with a password Nilesh@123 and grant them all privileges:
+Once in the MySQL prompt (mysql>), execute the following commands to create a user named SQL_User with a password Pass@123 and grant them all privileges:
 
-CREATE USER 'Nilesh'@'localhost' IDENTIFIED BY 'Nilesh@123';
-GRANT ALL PRIVILEGES ON *.* TO 'Nilesh'@'localhost' WITH GRANT OPTION;
+CREATE USER 'SQL_User'@'localhost' IDENTIFIED BY 'Pass@123';
+GRANT ALL PRIVILEGES ON *.* TO 'SQL_User'@'localhost' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
-SHOW GRANTS FOR 'Nilesh'@'localhost';
+SHOW GRANTS FOR 'SQL_User'@'localhost';
 
 (Note: Using localhost for the user limits connections to the local machine. If you need remote access, replace localhost with % or a specific IP address.)
 Exit MySQL:
@@ -88,9 +88,9 @@ exit;
 
 Test logging in with the new user:
 
-sudo mysql -u Nilesh -p
+sudo mysql -u SQL_User -p
 
-Enter Nilesh@123 when prompted for the password.
+Enter Pass@123 when prompted for the password.
 Inside the MySQL prompt, create a sample database:
 
 CREATE DATABASE oggy;
@@ -116,10 +116,10 @@ Now, access the PostgreSQL prompt:
 
 psql
 
-Inside the PostgreSQL prompt (postgres=#), create a new user named Mane with a password Mane@123 and grant them superuser privileges:
+Inside the PostgreSQL prompt (postgres=#), create a new user named PSQL_User with a password Pass@123 and grant them superuser privileges:
 
-CREATE USER Mane WITH LOGIN PASSWORD 'Mane@123';
-ALTER USER Mane WITH SUPERUSER;
+CREATE USER PSQL_User WITH LOGIN PASSWORD 'Pass@123';
+ALTER USER PSQL_User WITH SUPERUSER;
 \du # List users to verify
 
 Create a sample database named jack:
@@ -310,15 +310,15 @@ print("PostgreSQL connection closed.")
 # IMPORTANT: Replace these with your actual database credentials and hostnames/IPs.
 mysql_config = {
 "host": "localhost",
-"user": "Nilesh", # MySQL user created earlier
-"password": "Nilesh@123", # MySQL user password
+"user": "SQL_User", # MySQL user created earlier
+"password": "Pass@123", # MySQL user password
 "database": "oggy" # MySQL database to migrate from
 }
 
 psql_config = {
 "host": "100.100.100.100", # PostgreSQL server IP or hostname (e.g., 'localhost' or 'your_server_ip')
-"user": "Mane", # PostgreSQL user created earlier
-"password": "Mane@123", # PostgreSQL user password
+"user": "PSQL_User", # PostgreSQL user created earlier
+"password": "Pass@123", # PostgreSQL user password
 "database": "jack" # PostgreSQL database to migrate to
 }
 
