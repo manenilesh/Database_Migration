@@ -1,5 +1,7 @@
-Database Installation and Migration Guide
+**Database Installation and Migration Guide**
+
 This README provides a comprehensive guide for installing and setting up MySQL, PostgreSQL, and PGAdmin on an Ubuntu system. It also includes a Python script for migrating data from a MySQL database to a PostgreSQL database.
+
 Table of Contents
 
     Prerequisites
@@ -16,13 +18,16 @@ Table of Contents
     Usage
     Troubleshooting
 
-1. Prerequisites
+**1. Prerequisites**
 
     An Ubuntu-based operating system (e.g., Ubuntu 20.04, 22.04).
     sudo privileges.
     Internet connectivity.
 
-2. Installation and Setup
+
+**2. Installation and Setup**
+
+
 MySQL Server
 To install the MySQL server, open your terminal and run:
 
@@ -50,8 +55,12 @@ After installation, set up the web interface for PGAdmin 4:
 
 sudo /usr/pgadmin4/bin/setup-web.sh
 
+
+
 Follow the prompts to create an email and password for your PGAdmin 4 login. You can then access PGAdmin 4 by opening a web browser and navigating to http://127.0.0.1/pgadmin4 (or http://your_server_ip/pgadmin4).
-3. Python Database Connectors
+
+
+**3. Python Database Connectors**
 To interact with MySQL and PostgreSQL from Python, you need to install the respective database connector libraries.
 PyMySQL
 For MySQL connectivity:
@@ -63,7 +72,8 @@ For PostgreSQL connectivity:
 
 pip install psycopg2-binary
 
-4. Database Configuration
+
+**4. Database Configuration**
 MySQL User and Database Setup
 After installing MySQL, it's highly recommended to run the security script to improve its security posture:
 
@@ -152,14 +162,16 @@ sudo nano /etc/postgresql/17/main/pg_hba.conf # Adjust '17' to your PostgreSQL v
 Add a line like this at the end of the file to allow connections from a specific IP range (e.g., 10.10.10.0/24) using MD5 password authentication:
 
 # TYPE  DATABASE        USER            ADDRESS                 METHOD
-host    all             all             10.10.10.198/24         md5
+host    all             all             100.100.100.100/24         md5
 
 Replace 10.10.10.198/24 with the network range from which you want to allow connections. For a single IP, use /32 (e.g., 10.10.10.198/32). For all IPs, use 0.0.0.0/0 (use with caution in production environments).
 Restart PostgreSQL: After modifying the configuration files, restart the PostgreSQL service for the changes to take effect:
 
 sudo systemctl restart postgresql
 
-5. Python Migration Script
+
+
+**5. Python Migration Script**
 This Python script connects to a MySQL database, fetches all tables and their data, and then creates corresponding tables and inserts the data into a PostgreSQL database. It includes basic data type mapping and handles potential errors like duplicate tables or unique violations.
 
 import pymysql
