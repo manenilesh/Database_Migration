@@ -1,5 +1,7 @@
 MySQL to PostgreSQL Database Migration Script
+
 This README provides comprehensive instructions for setting up MySQL and PostgreSQL databases, installing necessary tools and Python packages, and using the provided Python script to migrate data from a MySQL database to a PostgreSQL database.
+
 Table of Contents
 
     Introduction
@@ -18,8 +20,12 @@ Table of Contents
         Example Configuration
     Important Notes
 
+
+
 1. Introduction
 This Python script facilitates the migration of data from a MySQL database to a PostgreSQL database. It connects to both databases, retrieves table schemas and data from MySQL, and then creates corresponding tables and inserts data into PostgreSQL. It includes basic data type mapping and handles duplicate table creation and unique constraint violations during data insertion.
+
+
 2. Prerequisites
 Before you begin, ensure you have the following installed on your system:
 
@@ -29,6 +35,8 @@ Before you begin, ensure you have the following installed on your system:
     pgAdmin: (Optional) A popular open-source administration and development platform for PostgreSQL.
     Python 3: The script is written in Python 3.
     Python Packages: PyMySQL and psycopg2-binary.
+
+
 
 3. Setup Instructions
 Follow these steps to set up your environment:
@@ -55,6 +63,8 @@ sudo /usr/pgadmin4/bin/setup-web.sh
 Install Python Packages
 
 pip install PyMySQL psycopg2-binary
+
+
 
 4. Database Configuration
 Configure MySQL
@@ -128,12 +138,14 @@ Configure PostgreSQL
         Add or modify a line to allow connections from your migration script's host. For example, to allow connections from the 100.100.100.0/24 network for all databases and users using md5 password authentication:
 
         # TYPE  DATABASE        USER            ADDRESS                 METHOD
-        host    all             all             100.100.100.0/24        md5
+        host    all             all             100.100.100.100/24        md5
 
-        Note: 100.100.100.0/24 is an example. Replace it with the network range from which your migration script will connect, or 0.0.0.0/0 for any IP (less secure).
+        Note: 100.100.100.00/24 is an example. Replace it with the network range from which your migration script will connect, or 0.0.0.0/0 for any IP (less secure).
     Restart PostgreSQL Service: After modifying configuration files, you must restart PostgreSQL for changes to take effect:
 
     sudo systemctl restart postgresql
+
+
 
 5. Python Migration Script
 Script Overview
@@ -301,6 +313,8 @@ table_mapping = {
 
 if __name__ == "__main__":
 migrate_mysql_to_psql(mysql_config, psql_config, table_mapping)
+
+
 
 6. Important Notes
 
