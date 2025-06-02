@@ -60,7 +60,7 @@ listen_addresses = 'localhost'  -->Replace--> listen_addresses = '100.100.100.10
 
 sudo nano /etc/postgresql/17/main/pg_hba.conf
 Replace--->
-host    all             all             10.10.10.198/24           md5
+host    all             all             100.100.100.100/24           md5
 
 
 ## Restart the postgresql 
